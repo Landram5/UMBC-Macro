@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "umbcmacro",
+  "version": "${version}",
+  "name": "UMBC Macro",
+  "description": "Configurable key combos that send predefined chat commands",
+  "authors": ["Landram5", "spunkyinsaan"],
+  "environment": "client",
+  "license": "MIT",
+  "icon": "icon.png",
+  "entrypoints": {
+    "client": [
+      "com.landram5.umbcmacro.UmbcMacroClient"
+    ],
+    "modmenu": [
+      "com.landram5.umbcmacro.modmenu.UmbcMacroModMenu"
+    ]
+  },
+  "contact": {
+    "homepage": "https://github.com/Landram5/UMBC-Macro",
+    "sources": "https://github.com/Landram5/UMBC-Macro"
+  },
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~26.3",
+    "fabric-api": "*"
+  }
+}
