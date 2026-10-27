@@ -36,7 +36,7 @@ public class UmbcMacroScreen extends Screen {
       this.panelWidth = Math.min(620, this.width - 40);
       this.panelLeft = (this.width - this.panelWidth) / 2;
       this.panelTop = 42;
-      int y = this.panelTop + 22;
+      int y = this.panelTop + 2; // each row labels its own columns
 
       for (Macro m : this.manager.getMacros()) {
          UmbcMacroScreen.Row r = new UmbcMacroScreen.Row(m);
@@ -66,12 +66,10 @@ public class UmbcMacroScreen extends Screen {
       this.extractTransparentBackground(extractor);
       extractor.fill(this.panelLeft - 6, this.panelTop - 10, this.panelLeft + this.panelWidth + 6, this.height - 42, -1341124592);
       extractor.outline(this.panelLeft - 6, this.panelTop - 10, this.panelWidth + 12, this.height - this.panelTop - 32, -7631989);
-      extractor.centeredText(this.font, this.title, this.width / 2, 18, 16777215);
-      extractor.text(this.font, Component.literal("Modifier"), this.panelLeft + 14, this.panelTop + 7, 10526880);
-      extractor.text(this.font, Component.literal("Key"), this.panelLeft + 124, this.panelTop + 7, 10526880);
-      extractor.text(this.font, Component.literal("Command"), this.panelLeft + 214, this.panelTop + 7, 10526880);
+      extractor.centeredText(this.font, this.title, this.width / 2, 18, 0xFFFFFFFF);
+      // sits between the panel's bottom edge (height - 42) and the buttons (height - 30)
       extractor.text(
-         this.font, Component.literal("Press ESC, Backspace, or Delete while selecting a key to clear it."), this.panelLeft, this.height - 46, 10526880
+         this.font, Component.literal("Press ESC, Backspace, or Delete while selecting a key to clear it."), this.panelLeft, this.height - 40, 0xFFA0A0A0
       );
 
       for (UmbcMacroScreen.Row r : this.rows) {
@@ -155,7 +153,7 @@ public class UmbcMacroScreen extends Screen {
          this.command.setMaxLength(Integer.MAX_VALUE);
          this.command.setValue(this.macro.command);
          this.command.moveCursorToEnd(false);
-         this.command.setSuggestion("Type chat text or /command");
+         this.command.setHint(Component.literal("Type chat text or /command")); // only shown while empty
          this.command.setResponder(s -> {
             this.macro.command = s;
             UmbcMacroScreen.this.manager.save();
@@ -188,9 +186,9 @@ public class UmbcMacroScreen extends Screen {
          int width = UmbcMacroScreen.this.panelWidth - 20;
          extractor.fill(left, top, left + width, top + 52, -1875890128);
          extractor.outline(left, top, width, 52, -10790053);
-         extractor.text(UmbcMacroScreen.this.font, Component.literal("Modifier"), this.modSel.getX(), this.y + 5, 16777215);
-         extractor.text(UmbcMacroScreen.this.font, Component.literal("Key"), this.keyBtn.getX(), this.y + 5, 16777215);
-         extractor.text(UmbcMacroScreen.this.font, Component.literal("Command"), this.command.getX(), this.y + 5, 16777215);
+         extractor.text(UmbcMacroScreen.this.font, Component.literal("Modifier"), this.modSel.getX(), this.y + 5, 0xFFFFFFFF);
+         extractor.text(UmbcMacroScreen.this.font, Component.literal("Key"), this.keyBtn.getX(), this.y + 5, 0xFFFFFFFF);
+         extractor.text(UmbcMacroScreen.this.font, Component.literal("Command"), this.command.getX(), this.y + 5, 0xFFFFFFFF);
       }
 
       private String label(Modifier m) {
