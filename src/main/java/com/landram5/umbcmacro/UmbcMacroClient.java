@@ -30,7 +30,7 @@ public class UmbcMacroClient implements ClientModInitializer {
       ConfigManager config = new ConfigManager(FabricLoader.getInstance().getConfigDir());
       macroManager = new MacroManager(config);
       macroManager.load();
-      openScreenKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.umbcmacro.open_screen", InputConstants.KEY_C, Category.MISC));
+      openScreenKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.umbcmacro.open_screen", InputConstants.KEY_J, Category.MISC));
       ClientCommandRegistrationCallback.EVENT
          .register(
             (dispatcher, registryAccess) -> dispatcher.register(
